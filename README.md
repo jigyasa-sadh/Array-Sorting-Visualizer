@@ -1,4 +1,4 @@
-# 📊 Array Sorting Visualizer
+ Array Sorting Visualizer
 
 A modern web-based interactive **Sorting Visualizer** built using **HTML, CSS, and JavaScript**. This project helps users visualize how different sorting algorithms work step-by-step with dynamic bars and live values.
 
