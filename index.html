@@ -11,9 +11,36 @@
     <div class="container">
         <h1>ARRAY SORTING VISUALIZER</h1>
 
+        <!-- User Guidance / How-to-Use Box -->
+        <div class="guide-box">
+            <div class="guide-header">
+                <span>How to Use This Visualizer</span>
+                <button type="button" id="btn-toggle-guide" class="guide-toggle">Hide Guide</button>
+            </div>
+            <ol id="guide-content" class="guide-steps">
+                <li><strong>Choose Your Array:</strong> Enter a <strong>Size (2–20)</strong> and type your numbers separated by commas or spaces, then click <strong>Set Array</strong> — <em>or</em> simply click <strong>Random Array</strong> to generate numbers automatically.</li>
+                <li><strong>Pick Algorithm &amp; Order:</strong> Select a sorting algorithm, choose <strong>Ascending</strong> or <strong>Descending</strong>, and pick a speed (Slow / Medium / Fast).</li>
+                <li><strong>Watch &amp; Learn:</strong> Click <strong>Sort Array</strong> to see step-by-step comparisons, swaps/shifts, and live explanations in the status box.</li>
+            </ol>
+        </div>
+
+        <!-- Custom Array Input Section -->
+        <div class="custom-input-section">
+            <div class="input-group">
+                <label for="array-size">Size (2–20):</label>
+                <input type="number" id="array-size" min="2" max="20" value="8" placeholder="Size">
+            </div>
+            <div class="input-group elements-group">
+                <label for="array-elements">Elements (comma or space separated):</label>
+                <input type="text" id="array-elements" placeholder="e.g. 64, 34, 25, 12, 22, 11, 90, 45">
+            </div>
+            <button id="btn-set-array" title="Load the custom size and elements you typed">Set Array</button>
+        </div>
+        <p id="input-error" class="error-msg"></p>
+
         <!-- Controls Section -->
         <div class="controls">
-            <select id="algorithm-select">
+            <select id="algorithm-select" title="Select sorting algorithm">
                 <option value="bubble">Bubble Sort</option>
                 <option value="insertion">Insertion Sort</option>
                 <option value="selection">Selection Sort</option>
@@ -23,11 +50,35 @@
                 <option value="radix">Radix Sort</option>
             </select>
 
-            <button id="btn-generate">New Array</button>
-            <button id="btn-start">Sort Array</button>
+            <select id="order-select" title="Choose ascending or descending order">
+                <option value="asc">Ascending (Low → High)</option>
+                <option value="desc">Descending (High → Low)</option>
+            </select>
+
+            <select id="speed-select" title="Choose animation speed">
+                <option value="600">Slow</option>
+                <option value="300" selected>Medium</option>
+                <option value="100">Fast</option>
+            </select>
+
+            <button id="btn-generate" title="Generate random numbers of the chosen size">Random Array</button>
+            <button id="btn-start" title="Start animating the selected sort">Sort Array</button>
         </div>
 
-        <!-- Visualizer Bars Container (Video Style Center) -->
+        <!-- Color Legend -->
+        <div class="legend">
+            <span><i class="dot default"></i> Unsorted</span>
+            <span><i class="dot comparing"></i> Comparing</span>
+            <span><i class="dot swapping"></i> Swapping / Active</span>
+            <span><i class="dot sorted"></i> Sorted</span>
+        </div>
+
+        <!-- Live Step-by-Step Narration Box -->
+        <div class="status-box" id="status-text">
+            Tip: Type custom numbers and click "Set Array", or click "Random Array", then press "Sort Array".
+        </div>
+
+        <!-- Visualizer Bars Container -->
         <div class="visualizer" id="visualizer-container"></div>
 
         <!-- Complexity Display Box -->
